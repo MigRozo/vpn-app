@@ -1,6 +1,7 @@
 :root{
     --color-dark1: #0F1B27;
     --color-white1: #F2F2F2;
+    --color-gray1: #D2D2D2;
     --color-blue1: #29A4AF;
     --gradient-blue1: linear-gradient( to bottom, var(--color-blue1), rgba(40, 160, 170, 0) 90% );
     --color-red1: #D70228;
@@ -21,6 +22,14 @@ body{
     margin: 0;
 }
 
+.Subtitles{
+    font-size: 1.6rem;
+    display: block;
+    margin: 0.5em 0;
+    padding: 0 2rem;
+    font-weight: 400;
+}
+
 .Main{
     background: var(--gradient-red1);
     display: flex;
@@ -31,6 +40,8 @@ body{
     max-width: 100%;
     height: 92vh;
     margin: 4vh auto;
+    position: relative;
+    overflow: hidden;
 }
 .Main.active{
     background: var(--gradient-blue1);
@@ -54,7 +65,7 @@ body{
     transition: background 0.4s, color 0.4s;
 }
 .MainToggle:hover{
-    background: var(--color-white1);
+    background: var(--color-gray1);
     color: var(--color-dark1);
 }
 .MainToggle.active{
@@ -75,7 +86,7 @@ body{
     transition: background 0.4s, color 0.4s;
 }
 .MainStatus:hover{
-    background: var(--color-white1);
+    background: var(--color-gray1);
     color: var(--color-dark1);
 }
 .MainStatus_icon{
@@ -94,5 +105,75 @@ body{
 }
 .MainStatus_label span{
     display: block;
+    font-size: 0.8em;
+}
+
+.MainNav{
+    background: var(--color-dark1);
+    display: block;
+    width: 90%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    transform: translateX(-100%);
+    will-change: transform;
+    transition: transform 0.5s ease-in-out;
+    overflow-y: auto;
+}
+.MainNav.active{
+    transform: translateX(0);
+}
+.MainNav_list{
+    display: block;
+    margin: 0;
+    padding: 0 2rem;
+    list-style: none;
+}
+.MainNav_item{
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+}
+.MainNav_item input{
+    width: 1px;
+    height: 1px;
+    visibility: hidden;
+    position: absolute;
+}
+.MainNav_item label{
+    flex: 1 1;
+    display: flex;
+    align-items: center;
+}
+.MainNav_item label::after{
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    margin-left: 1rem;
+    border: 2px solid;
+    border-radius: 50%;
+    content: '';
+}
+.MainNav_item input:checked + label::after{
+    background: var(--color-blue1);
+}
+.MainNav_item-icon{
+    background: rgba(0,0,0,0.3);
+    display: block;
+    width: 1.6em;
+    height: 1.6em;
+    margin-right: 1rem;
+    border-radius: 50%;
+    object-fit: contain;
+}
+.MainNav_item-name{
+    display: block;
+    flex: 1 1;
+    font-weight: 400;
+}
+.MainNav_item-speed{
     font-size: 0.8em;
 }
