@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import icon from './assets/react.svg';
+import MainStatus from './components/MainStatus';
 
 const App = () => {
   const [connected, setConnected] = useState(false);
@@ -14,13 +15,7 @@ const App = () => {
         </svg>
       </button>
 
-      <button className="MainStatus" type="button" onClick={ () => setNavVisible(!navVisible) }>
-        <img className="MainStatus_icon" src={icon} alt="Status Icon" />
-        <div className="MainStatus_label">
-          <strong>{currentConnection}</strong>
-          <span>Connection {connected ? 'Enabled' : 'Disabled'}</span>
-        </div>
-      </button>
+      <MainStatus icon={icon} connectionName={currentConnection} connectionStatus={connected} navVisible={navVisible} setNavVisible={setNavVisible} />
 
       <aside className={`MainNav ${navVisible ? 'active' : null}`}>
         <div className="MainNav_top">back-search</div>
